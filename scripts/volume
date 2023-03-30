@@ -1,0 +1,24 @@
+#!/usr/bin/nu
+
+
+def inc_volume [] {
+  pulseaudio-ctl up
+}
+
+def dec_volume [] {
+  pulseaudio-ctl down
+}
+
+def main [--inc --dec] {
+  if $inc {
+    inc_volume
+
+    exit 0
+  }
+  
+  if $dec {
+    dec_volume
+
+    exit 0
+  }
+}

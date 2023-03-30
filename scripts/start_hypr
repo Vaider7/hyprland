@@ -1,0 +1,13 @@
+#!/usr/bin/nu
+
+# let power_supply = (cat /sys/class/power_supply/ADP1/online | into bool)
+
+# if $power_supply {
+#   export-env {
+#     let-env LIBVA_DRIVER_NAME = "nvidia"
+#     let-env GBM_BACKEND = "nvidia_drm"
+#     let-env __NV_PRIME_RENDER_OFFLOAD = "1"
+#     let-env __GLX_VENDOR_LIBRARY_NAME = "nvidia"
+#   }
+# }
+Hyprland | save /tmp/hyprland --stderr /tmp/hyprland --force

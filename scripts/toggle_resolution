@@ -1,0 +1,48 @@
+#!/usr/bin/nu
+
+
+let current_state = (ls /tmp | rg resolution_state)
+
+if ($current_state | str length) == 0 {
+  print "I'am here"
+  hyprctl keyword "monitor" "eDP-1, 2560x1440@165, 0x0, 1.0"
+  hyprctl keyword "monitor" "HDMI-A-1, 1920x1080@75, 2560x0, 1.0" 
+  1 | save -f /tmp/resolution_state
+  sleep 2sec
+
+  let is_running = (pidof hyprpaper | str length) > 0
+  
+  if $is_running {
+    hyprpaper
+  }
+  
+  exit 0
+}
+
+let current_state = (open /tmp/resolution_state | into int)
+
+if $current_state == 1 {
+  hyprctl keyword "monitor" "eDP-1, 2560x1440@165, 0x0, 1.5"
+  hyprctl keyword "monitor" "HDMI-A-1, 1920x1080@75, 1706x0, 1.0" 
+  sleep 2sec
+  0 | save -f /tmp/resolution_state
+
+  let is_running = (pidof hyprpaper | str length) > 0
+
+  if not $is_running {
+    hyprpaper
+  }
+  
+} else {
+  hyprctl keyword "monitor" "eDP-1, 2560x1440@165, 0x0, 1.0"
+  hyprctl keyword "monitor" "HDMI-A-1, 1920x1080@75, 2560x0, 1.0" 
+  1 | save -f /tmp/resolution_state
+  sleep 2sec
+  
+  let is_running = (pidof hyprpaper | str length) > 0
+
+  if not $is_running {
+    hyprpaper
+  }
+}
+

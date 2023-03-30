@@ -1,0 +1,2 @@
+#!/usr/bin/nu
+export-env { let-env HI = 'hi'}

@@ -1,0 +1,25 @@
+entry, entry:focus, entry:active {
+  background: #1E1E2E;
+  color: #CDD6F4;
+}
+
+window {
+  background: none;
+}
+
+main {
+  color: #CDD6F4;
+  background: #1E1E2E;
+}
+
+
+list#main  {
+  color: #CDD6F4;
+  background: #1E1E2E;
+}
+
+list#plugin {
+  color: #CDD6F4;
+  background: #1E1E2E;
+}
+

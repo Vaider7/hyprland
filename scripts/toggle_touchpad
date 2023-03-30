@@ -1,0 +1,19 @@
+#!/usr/bin/nu
+
+let current_state = (ls /tmp | rg touchpad_state)
+
+if ($current_state | str length) == 0 {
+  hyprctl keyword "device:msnb0001:00-04f3:30aa-touchpad:enabled" true  
+  1 | save -f /tmp/touchpad_state 
+  exit 0
+}
+
+let current_state = (open /tmp/touchpad_state | into int)
+
+if $current_state == 1 {
+  hyprctl keyword "device:msnb0001:00-04f3:30aa-touchpad:enabled" false
+  0 | save -f /tmp/touchpad_state
+} else {
+  hyprctl keyword "device:msnb0001:00-04f3:30aa-touchpad:enabled" true
+  1 | save -f /tmp/touchpad_state
+}

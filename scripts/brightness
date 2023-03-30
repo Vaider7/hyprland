@@ -1,0 +1,23 @@
+#!/usr/bin/nu
+
+def inc [] {
+  brightnessctl set 5%+
+}
+
+def dec [] {
+  brightnessctl set 5%- 
+}
+
+def main [--inc --dec] {
+  if $inc {
+    inc
+    
+    exit 0
+  }
+
+  if $dec {
+    dec
+    
+    exit 0
+  }
+}
