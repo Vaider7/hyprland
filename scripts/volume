@@ -1,15 +1,20 @@
 #!/usr/bin/nu
 
+def mute [] {
+  pulseaudio-ctl mute
+}
 
 def inc_volume [] {
   pulseaudio-ctl up
+  mpg123 ~/.config/hypr/sounds/pew.mp3
 }
 
 def dec_volume [] {
   pulseaudio-ctl down
+  mpg123 ~/.config/hypr/sounds/pew.mp3
 }
 
-def main [--inc --dec] {
+def main [--inc --dec --mute] {
   if $inc {
     inc_volume
 
@@ -18,6 +23,12 @@ def main [--inc --dec] {
   
   if $dec {
     dec_volume
+
+    exit 0
+  }
+
+  if $mute {
+    mute
 
     exit 0
   }
