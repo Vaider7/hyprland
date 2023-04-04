@@ -1,0 +1,5 @@
+#!/usr/bin/nu
+
+grim -g $"(slurp)" - | wl-copy
+
+notify-send "Copied to Clipboard!"

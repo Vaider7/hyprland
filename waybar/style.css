@@ -40,7 +40,7 @@ window#waybar {
 	background: @base;
 }
 
-.modules-right {
+.modules-right, .modules-left {
 	margin: 5px 0;
 }
 
@@ -48,7 +48,7 @@ window#waybar {
 	padding: 0 8px;
 	margin-right: 8px;
 	background: @surface0;
-	color: @green;
+	color: @lavender;
 }
 
 #network {
@@ -80,4 +80,52 @@ window#waybar {
 	padding: 0 8px;
 	margin-right: 8px;
 	background: @surface0;
+}
+
+#temperature {
+	padding: 0 8px;
+	margin-left: 8px;
+	background: @surface0;
+	color: @maroon;
+}
+
+#temperature.gpu {
+	color: @green;
+}
+
+#custom-weather {
+  padding: 0 8px;
+	margin-left: 8px;
+	background: @surface0;
+	color: @sapphire
+}
+
+#workspaces button {
+		margin: 5px 0; 
+    padding: 0 5px;
+    color: #313244;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+  color: @text;
+	background: @surface0;	
+}
+
+#workspaces button.focused {
+    color: @text;
+    background: @surface0;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: @text;
+    background: @surface0;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: #11111b;
+    color: #cdd6f4;
+    border-radius: 10px;
 }

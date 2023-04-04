@@ -1,10 +1,18 @@
 {
 	"layer": "top",
-    "margin": "5 15 0 15",
+    "margin": "5 10 0 10",
 	"height": 35,
-	"modules-left": ["wlr/workspaces"],
+	"modules-left": ["temperature", "temperature#gpu", "custom/weather"],
 	"modules-right": ["pulseaudio","network", "battery", "clock", "tray"],
-	"pulseaudio": {
+	"modules-center": ["wlr/workspaces"],
+  "custom/weather" : {
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 300,
+        "exec" : "weather",
+        "return-type" : "json"
+  },	
+  "pulseaudio": {
 		"tooltip": false,
 		"scroll-step": 5,
 		"format": "{icon}  {volume}%",
@@ -14,6 +22,17 @@
 			"default": ["", "", ""]
 		}
 	},
+
+	"temperature": {
+		"thermal-zone": 4,
+		"format": " {temperatureC}°C",
+    "interval": 1,
+	},
+  "temperature#gpu": {
+    "thermal-zone": 5,
+    "format": " {temperatureC}°C",
+    "interval": 1,
+  },
 
 	"network": {
 		"tooltip-format": "{essid}",
@@ -42,6 +61,21 @@
 	"tray":{
 		"icon-size":18,
 		"spacing": 10
+	},
+	"wlr/workspaces": {
+		"format": "{name}",
+    "all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+        }
 	},
     "clock": {
         "format": "{: %I:%M %p}",

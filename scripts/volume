@@ -6,12 +6,12 @@ def mute [] {
 
 def inc_volume [] {
   pulseaudio-ctl up
-  mpg123 ~/.config/hypr/sounds/pew.mp3
+  mpg123 ~/.config/hypr/sounds/click.mp3
 }
 
 def dec_volume [] {
   pulseaudio-ctl down
-  mpg123 ~/.config/hypr/sounds/pew.mp3
+  mpg123 ~/.config/hypr/sounds/click.mp3
 }
 
 def main [--inc --dec --mute] {
