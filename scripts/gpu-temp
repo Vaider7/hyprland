@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nvidia-smi -q -d TEMPERATURE | rg "GPU Current Temp" | rg '\d\d' -o

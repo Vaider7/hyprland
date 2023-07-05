@@ -2,7 +2,7 @@
 	"layer": "top",
     "margin": "5 10 0 10",
 	"height": 35,
-	"modules-left": ["temperature", "temperature#gpu", "custom/weather"],
+	"modules-left": ["temperature", "custom/gpu-temp", "custom/weather"],
 	"modules-right": ["pulseaudio","network", "battery", "clock", "tray"],
 	"modules-center": ["wlr/workspaces"],
   "custom/weather" : {
@@ -26,13 +26,19 @@
 	"temperature": {
 		"thermal-zone": 4,
 		"format": " {temperatureC}°C",
-    "interval": 1,
+	"interval": 1,
 	},
-  "temperature#gpu": {
-    "thermal-zone": 5,
-    "format": " {temperatureC}°C",
-    "interval": 1,
-  },
+	"custom/gpu-temp": {
+		"format": " {}°C",
+		"interval": 1,
+		"exec": "gpu-temp",
+		
+	},
+	"temperature#gpu": {
+		"thermal-zone": 5,
+		"format": " {temperatureC}°C",
+		"interval": 1,
+	},
 
 	"network": {
 		"tooltip-format": "{essid}",
