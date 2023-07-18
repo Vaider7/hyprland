@@ -1,147 +1,78 @@
 {
-	"layer": "top",
-    "margin": "5 10 0 10",
-	"height": 35,
-	"modules-left": ["temperature", "custom/gpu-temp", "custom/weather"],
-	"modules-right": ["pulseaudio","network", "battery", "clock", "tray"],
-	"modules-center": ["wlr/workspaces"],
-  "custom/weather" : {
-        "tooltip" : true,
-        "format" : "{}",
-        "interval" : 300,
-        "exec" : "weather",
-        "return-type" : "json"
-  },	
-  "pulseaudio": {
-		"tooltip": false,
-		"scroll-step": 5,
-		"format": "{icon}  {volume}%",
-		"format-muted": "婢 0%",
-		"on-click":"pulseaudio-ctl mute",
-		"format-icons": {
-			"default": ["", "", ""]
-		}
-	},
+    "layer": "top",
+    "height": 30,
+    "position": "bottom",
+    "spacing": 0,
+    "exclusive": false,
+    "margin-bottom": 50,
+    "margin-right": 210,
+    "margin-left": 1600,
+    "fixed-center": false,
 
-	"temperature": {
-		"thermal-zone": 4,
-		"format": " {temperatureC}°C",
-	"interval": 1,
-	},
-	"custom/gpu-temp": {
-		"format": " {}°C",
-		"interval": 1,
-		"exec": "gpu-temp",
-		
-	},
-	"temperature#gpu": {
-		"thermal-zone": 5,
-		"format": " {temperatureC}°C",
-		"interval": 1,
-	},
-
-	"network": {
-		"tooltip-format": "{essid}",
-		"format-wifi": "  {signalStrength}%",
-		"format-ethernet": ""
-	},
-	"backlight": {
-		"tooltip": false,
-		"format": " {}%",
-		"interval":1,
-        "on-scroll-up": "light -A 5",
-		"on-scroll-down": "light -U 5"
-	},
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+    "modules-left": [
+        
+    ],
+    
+    "modules-center": [
+        "tray",
+    ],
+    
+    "modules-right": [
+    ],
+    
+    "custom/weather": {
+        "exec": "curl 'https://wttr.in/?format=1' | tr -d '+'",
+        "interval": 1800
     },
-	"tray":{
-		"icon-size":18,
-		"spacing": 10
-	},
-	"wlr/workspaces": {
-		"format": "{name}",
-    "all-outputs": true,
-    "on-click": "activate",
-    "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-        }
-	},
+    
+    "custom/start": {
+        "format": "               ",
+        "on-click": "~/.config/eww/scripts/toggle-overview.sh"
+    },
+    
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 24,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+    },
+    
     "clock": {
-        "format": "{: %I:%M %p}",
-		"tooltip-format": "<span>{calendar}</span>",
-		"calendar": {
-                    "mode"          : "year",
-                    "mode-mon-col"  : 3,
-                    // "weeks-pos"     : "right",
-                    "on-scroll"     : 1,
-                    "on-click-right": "mode",
-                    "format": {
-                              "months":     "<span color='#94e2d5'><b>{}</b></span>",
-                              "days":       "<span color='#f9e2af'><b>{}</b></span>",
-                              // "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                              }
-                    },
+        "format": "   {:%I:%M %p%n%e/%m/%G}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "  {:%Y-%m-%d}"
     },
-    "cpu": {
-        "interval": 15,
-        "format": " {}%",
-        "max-length": 10
+    
+    "tray": {
+        "spacing": 8
     },
-    "memory": {
-        "interval": 30,
-        "format": " {}%",
-        "max-length": 10
-    },
-    "custom/media": {
-        "interval": 30,
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 20,
+    
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-bluetooth": "{volume}%  {icon} {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": "  {volume}",
+        "format-source-muted": "",
         "format-icons": {
-            "spotify": " ",
-            "default": " "
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
         },
-        "escape": true,
-        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
-        "on-click": "playerctl play-pause"
+        "tooltip-format": "{format_source}%",
+        "on-click": "easyeffects"
     },
-    "custom/launcher":{
-        "format": " ",
-        "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "alacritty -e nmtui"
     },
-    "custom/power":{
-        "format": " ",
-        "on-click": "bash ~/.config/rofi/leave/leave.sh",
-    },
-    "custom/updates":{
-        "format": "{} Update(s)",
-        "exec": "checkupdates | wc -l",
-        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
-        "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated' "
-    },
-    "custom/wallpaper":{
-        "format":" ",
-        "on-click": "bash ~/.config/system_scripts/pkill_bc"
-    }
 }

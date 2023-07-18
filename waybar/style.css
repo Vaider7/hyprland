@@ -1,136 +1,67 @@
-@define-color base   #1e1e2e;
-@define-color mantle #181825;
-@define-color crust  #11111b;
-
-@define-color text     #cdd6f4;
-@define-color subtext0 #a6adc8;
-@define-color subtext1 #bac2de;
-
-@define-color surface0 #313244;
-@define-color surface1 #45475a;
-@define-color surface2 #585b70;
-
-@define-color overlay0 #6c7086;
-@define-color overlay1 #7f849c;
-@define-color overlay2 #9399b2;
-
-@define-color blue      #89b4fa;
-@define-color lavender  #b4befe;
-@define-color sapphire  #74c7ec;
-@define-color sky       #89dceb;
-@define-color teal      #94e2d5;
-@define-color green     #a6e3a1;
-@define-color yellow    #f9e2af;
-@define-color peach     #fab387;
-@define-color maroon    #eba0ac;
-@define-color red       #f38ba8;
-@define-color mauve     #cba6f7;
-@define-color pink      #f5c2e7;
-@define-color flamingo  #f2cdcd;
-@define-color rosewater #f5e0dc;
-
 * {
-	border: none;
-	border-radius: 10px;
-  font-family: "JetbrainsMono Nerd Font" ;
-	font-size: 14px;
+    color: #f3f9ff;
+    font-size: 11px;
+    font-family: Segoe-Fluent-Icons, Segoe-UI;
+    font-weight: 500;
 }
 
 window#waybar {
-	background: none;
+    background: transparent;
 }
 
-.modules-right, .modules-left {
-	margin: 5px 0;
-}
-
-#pulseaudio {
-	padding: 0 8px;
-	margin-right: 8px;
-	background: @surface0;
-	color: @lavender;
-}
-
-#network {
-	padding: 0 8px;
-	background: @surface0;
-	margin-right: 8px;
-	color: @blue;
-}
-
-#battery {
-	padding: 0 8px;
-	margin-right: 8px;
-	background: @surface0;
-	color: @yellow;
-}
-
-#clock {
-	padding: 0 8px;
-	margin-right: 8px;
-	background: @surface0;
-	color: @teal;
-}
-
-#clock .calendar {
-	background: #ffffff;
+tooltip {
+    background: #141414;
+    border-radius: 4px;
 }
 
 #tray {
-	padding: 0 8px;
-	margin-right: 8px;
-	background: @surface0;
+    font-size: 20px;
+    font-weight: 200;
+    padding: 4px;
+    min-width: 100px;
+    min-height: 37px;
+    background: rgba(45, 46, 48, 1);
+    background-image: url('images/textures/acrylic.png');
+    border-radius: 9px;
+    border: 1px solid rgba(34, 35, 38, 0.5);
+    margin: 14px;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.65);
 }
 
-#temperature {
-	padding: 0 8px;
-	margin-left: 8px;
-	background: @surface0;
-	color: @maroon;
-}
-
-#custom-gpu-temp {
-	padding: 0 8px;
-	margin-left: 8px;
-	background: @surface0;
-	color: @green;
+#window,
+#pulseaudio,
+#network,
+#bluetooth {
+    font-size: 14px;
+    font-weight: 200;
+    padding: 4px;
 }
 
 #custom-weather {
-  padding: 0 8px;
-	margin-left: 8px;
-	background: @surface0;
-	color: @sapphire
+    padding-left: 12px;
+    font-size: 11px;
 }
 
-#workspaces button {
-	border-radius: 9999px;
-	background: @surface0;
-	margin: 5px 0; 
-  padding: 0 5px;
-  color: @surface0;
-  margin-right: 5px;
+#custom-start {
+    background-image: url("./win.png");
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-#workspaces button.active {
-	background: @sky;
-	color: @sky;
+#taskbar {
+    border-radius: 6px;
+    min-width: 45px;
+    min-height: 45px;
+    /* border-top: 1px solid rgba(64, 64, 64, 0.8); */
 }
 
-#workspaces button.focused {
-    color: @text;
-    background: @surface0;
-    border-radius: 10px;
+#tray,
+#pulseaudio {
+    padding-right: 12px;
 }
 
-#workspaces button.urgent {
-    color: @text;
-    background: @surface0;
-    border-radius: 10px;
-}
-
-#workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
+#clock {
+    padding-left: 3px;
+    padding-right: 18px;
 }
