@@ -1,9 +1,0 @@
-
-Config(
-  width: 800,
-  plugins: [
-    "libapplications.so",
-    "libshell.so",
-    "libtranslate.so",
-  ],
-)

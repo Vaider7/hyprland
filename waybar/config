@@ -4,7 +4,7 @@
 	"height": 35,
 	"modules-left": ["temperature", "custom/gpu-temp", "custom/weather"],
 	"modules-right": ["pulseaudio","network", "battery", "clock", "tray"],
-	"modules-center": ["wlr/workspaces"],
+	"modules-center": ["hyprland/workspaces"],
   "custom/weather" : {
         "tooltip" : true,
         "format" : "{}",

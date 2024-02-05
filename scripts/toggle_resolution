@@ -4,8 +4,8 @@
 let current_state = (ls /tmp | rg resolution_state)
 
 if ($current_state | str length) == 0 {
-  hyprctl keyword "monitor" "eDP-1, 2560x1440@165, 0x0, 1.0"
-  hyprctl keyword "monitor" "HDMI-A-1, 1920x1080@75, 2560x0, 1.0" 
+  hyprctl keyword "monitor" "eDP-1, highres, 0x0, 1.0"
+  hyprctl keyword "monitor" "HDMI-A-1, highres, 2560x0, 1.0" 
   1 | save -f /tmp/resolution_state
   sleep 1sec
 
@@ -21,8 +21,8 @@ if ($current_state | str length) == 0 {
 let current_state = (open /tmp/resolution_state | into int)
 
 if $current_state == 1 {
-  hyprctl keyword "monitor" "eDP-1, 2560x1440@165, 0x0, 1.5"
-  hyprctl keyword "monitor" "HDMI-A-1, 1920x1080@75, 1706x0, 1.0" 
+  hyprctl keyword "monitor" "eDP-1, highres, 0x0, 1.6"
+  hyprctl keyword "monitor" "HDMI-A-1, highres, 1600x0, 1.0" 
   sleep 1sec
   0 | save -f /tmp/resolution_state
 
@@ -33,8 +33,8 @@ if $current_state == 1 {
   }
   
 } else {
-  hyprctl keyword "monitor" "eDP-1, 2560x1440@165, 0x0, 1.0"
-  hyprctl keyword "monitor" "HDMI-A-1, 1920x1080@75, 2560x0, 1.0" 
+  hyprctl keyword "monitor" "eDP-1, highres, 0x0, 1.0"
+  hyprctl keyword "monitor" "HDMI-A-1, highres, 2560x0, 1.0" 
   1 | save -f /tmp/resolution_state
   sleep 1sec
   
